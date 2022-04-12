@@ -1,14 +1,17 @@
-import React, {Suspense} from 'react'
-import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
-import store from './store'
-import App from './App'
+import React, { Suspense } from 'react';
+import ReactDOM from "react-dom/client";
+import { Provider } from 'react-redux';
+import store from './store';
+import App from './App';
+import reportWebVitals from "./reportWebVitals";
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
   <Suspense fallback={(<div>Loading...</div>)}>
-  <Provider store={store}>
-    <App />
-  </Provider>
+    <Provider store={store}>
+      <App />
+    </Provider>
   </Suspense>,
-  document.getElementById('root')
 )
+
+reportWebVitals();

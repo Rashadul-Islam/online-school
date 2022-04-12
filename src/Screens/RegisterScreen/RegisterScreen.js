@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
-// import { useDispatch, useSelector } from "react-redux";
-// import Message from "../../components/common/Message";
-// import { register } from "../../actions/userActions";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import Message from "../../Components/common/Message";
+import { register } from "../../actions/userActions";
 import "./RegisterScreen.css";
 import { HiOutlineMail } from "react-icons/hi";
 import { RiLockLine } from "react-icons/ri";
-// import { useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 const RegisterScreen = () => {
   const [role, setRole] = useState("");
@@ -14,16 +14,34 @@ const RegisterScreen = () => {
   const [password, setPassword] = useState("");
   const [retypePassword, setRetypePassword] = useState("");
   const [message, setMessage] = useState(null);
+  const dispatch = useDispatch();
+
+  const history = useNavigate();
+
+  const location = useLocation();
+
+  const userRegister = useSelector((state) => state.userRegister);
+  const { error } = userRegister;
+
+  const userLogin = useSelector((state) => state.userLogin);
+    const { userInfo } = userLogin;
+
+  useEffect(() => {
+    if (userInfo) {
+      history("/profile/create");
+    }
+    // eslint-disable-next-line
+  }, [userInfo]);
 
   const submitHandler = (e) => {
-    // e.preventDefault();
-    // if (password === retypePassword) {
-    //   setMessage("");
-    //   dispatch(register(role, email, password));
-    //   document.getElementById("signup_form").reset();
-    // } else {
-    //   setMessage("Both Password Should Matched");
-    // }
+    e.preventDefault();
+    if (password === retypePassword) {
+      setMessage("");
+      dispatch(register(role, email, password));
+      document.getElementById("signup_form").reset();
+    } else {
+      setMessage("Both Password Should Matched");
+    }
   };
 
   return (
@@ -100,8 +118,8 @@ const RegisterScreen = () => {
               <RiLockLine className="i" />
             </div>
             <div className="mt-3">
-              {/* {message && <Message variant="danger">{message}</Message>}
-              {error && <Message variant="danger">{error}</Message>} */}
+              {message && <Message variant="danger">{message}</Message>}
+              {error && <Message variant="danger">{error}</Message>}
             </div>
             <p className="pt-2 pb-2">
               <small className="bottom_text">

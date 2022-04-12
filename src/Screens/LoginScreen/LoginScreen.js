@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useHistory, useLocation } from "react-router";
+import { Link, useNavigate } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
-// import { useDispatch, useSelector } from "react-redux";
-// import Message from "../../components/common/Message";
-// import { login } from "../../actions/userActions";
+import { useDispatch, useSelector } from "react-redux";
+import Message from "../../Components/common/Message";
+import { login } from "../../actions/userActions";
 import "./LoginScreen.css";
 import { HiOutlineMail } from "react-icons/hi";
 import { RiLockLine } from "react-icons/ri";
@@ -13,10 +12,24 @@ const LoginScreen = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const submitHandler = () => {
+    const history = useNavigate();
 
-    }
-    let location = useLocation();
+    const dispatch = useDispatch();
+
+    const userLogin = useSelector((state) => state.userLogin);
+    const { error, userInfo } = userLogin;
+
+
+    useEffect(() => {
+        if (userInfo) {
+            history("/dashboard");
+        }
+    }, [userInfo]);
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+        dispatch(login(email, password));
+    };
 
     return (
         <div className="mt-5 container main_content">
@@ -53,7 +66,7 @@ const LoginScreen = () => {
                                     />
                                     <RiLockLine className="i" />
                                 </Form.Group>
-                                {/* {error && <Message variant="danger">{error}</Message>} */}
+                                {error && <Message variant="danger">{error}</Message>}
                                 <div className="d-flex justify-content-between">
                                     <Form.Group className="mb-3" controlId="formBasicCheckbox">
                                         <Form.Check

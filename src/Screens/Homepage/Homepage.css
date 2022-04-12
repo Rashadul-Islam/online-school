@@ -23,6 +23,7 @@
 }
 .bg-image {
   height: 94vh;
+  overflow-x: hidden;
   background-position: center;
 }
 
@@ -39,7 +40,8 @@
   }
   .bg-image {
     height: 93.4vh;
-    background-position: cover;
+    overflow-x: hidden;
+    background-position: center;
   }
   .animate-charcter {
     font-size: 30px;

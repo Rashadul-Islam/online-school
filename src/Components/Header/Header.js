@@ -1,7 +1,19 @@
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from "../../actions/userActions";
 
 const Header = () => {
+    const dispatch = useDispatch();
+
+    const role = useSelector((state) =>
+        state.userLogin.userInfo ? state.userLogin.userInfo.role : ""
+    );
+
+    const logoutHandler = () => {
+        dispatch(logout());
+    };
+
     return (
         <Navbar expand="lg" >
             <Container fluid>
@@ -14,7 +26,7 @@ const Header = () => {
                         navbarScroll
                     >
                         <Nav.Link href="/">Home</Nav.Link>
-                        <Nav.Link href="/login">Login</Nav.Link>
+                        {role === "" ? <Nav.Link href="/login">Login</Nav.Link> : <Nav.Link onClick={logoutHandler} href="#">Logout</Nav.Link>}
                         <Nav.Link href="/" >About</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
