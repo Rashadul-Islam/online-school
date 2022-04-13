@@ -5,7 +5,7 @@ import ProfileCreate from '../../Components/TeacherProfileCreate/TeacherProfileC
 
 const TeacherProfileCreate = () => {
     return (
-        <Row>
+        <Row className='m-0'>
             <Col md={4} lg={2}>
                 <Sidebar />
             </Col>

@@ -1,0 +1,56 @@
+.image_delete {
+  position: absolute;
+  font-size: 25px;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.click-for-upload {
+  font-size: 18px;
+  color: #00a4e7;
+  cursor: pointer;
+  bottom: 2px;
+}
+
+.instruction-text {
+  text-align: center;
+  font-size: 15px;
+  color: #b8b8b8;
+}
+
+  .card-header {
+    font-size: 13px;
+    text-align: center;
+    font-weight: bold;
+    color: #6b6b6b;
+  }
+  
+  .card_width {
+    width: 100%;
+    height: 190px;
+  }
+  
+  .show_image {
+    position: relative;
+  }
+  
+  .profile_image {
+    width: 18rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .show_image img {
+    height: 190px;
+    width: 100%;
+    display: block;
+  }
+  
+  .show_image .image_delete {
+    position: absolute;
+    font-size: 25px;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+  }

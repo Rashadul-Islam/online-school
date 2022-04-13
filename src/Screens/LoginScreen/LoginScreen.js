@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../../Components/common/Message";
@@ -9,6 +9,7 @@ import { HiOutlineMail } from "react-icons/hi";
 import { RiLockLine } from "react-icons/ri";
 
 const LoginScreen = () => {
+    const location = useLocation();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -24,6 +25,7 @@ const LoginScreen = () => {
         if (userInfo) {
             history("/dashboard");
         }
+        // eslint-disable-next-line 
     }, [userInfo]);
 
     const submitHandler = (e) => {

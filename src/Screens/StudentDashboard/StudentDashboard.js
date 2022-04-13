@@ -4,7 +4,7 @@ import Sidebar from "../../Components/Sidebar/Sidebar"
 
 const StudentDashboard = () => {
     return (
-        <Row>
+        <Row className='m-0'>
             <Col>
                 <Sidebar />
             </Col>
