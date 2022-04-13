@@ -11,6 +11,8 @@ import StudentDashboard from "./Screens/StudentDashboard/StudentDashboard";
 import AdminDashboard from "./Screens/AdminDashboard/AdminDashboard";
 import TeacherProfileCreate from "./Screens/TeacherProfileCreate/TeacherProfileCreate";
 import StudentProfileCreate from "./Screens/StudentProfileCreate/StudentProfileCreate";
+import TeacherProfileView from "./Screens/TeacherProfileView/TeacherProfileView";
+import StudentProfileView from "./Screens/StudentProfileView/StudentProfileView";
 
 function App() {
   const role = useSelector((state) =>
@@ -31,6 +33,7 @@ function App() {
             <Route element={<ProtectedRoute role={role} />}>
               <Route path="/dashboard" element={<StudentDashboard />} />
               <Route path="/profile/create" element={<StudentProfileCreate />} />
+              <Route path="/profile" element={<StudentProfileView />} />
             </Route>
           }
           {
@@ -38,6 +41,7 @@ function App() {
             <Route element={<ProtectedRoute role={role} />}>
               <Route path="/dashboard" element={<TeacherDashboard />} />
               <Route path="/profile/create" element={<TeacherProfileCreate />} />
+              <Route path="/profile" element={<TeacherProfileView />} />
             </Route>
           }
           {

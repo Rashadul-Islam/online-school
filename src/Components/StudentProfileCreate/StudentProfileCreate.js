@@ -3,11 +3,10 @@ import React, { useState } from "react";
 import { Card, Col, Form, Row, Button } from "react-bootstrap";
 import { TiDelete } from "react-icons/ti";
 import { useSelector } from "react-redux";
-import "./TeacherProfileCreate.css";
 import swal from 'sweetalert';
 import { useNavigate } from 'react-router-dom';
 
-const TeacherProfileCreate = () => {
+const StudentProfileCreate = () => {
     const history = useNavigate();
     const [info, setInfo] = useState({
         name: "",
@@ -16,8 +15,8 @@ const TeacherProfileCreate = () => {
         birthDate: "",
         address: "",
         nationality: "",
-        degree: "",
-        result: "",
+        classLevel: "",
+        roll: "",
         institute: "",
         photo: [],
     });
@@ -60,12 +59,12 @@ const TeacherProfileCreate = () => {
         formData.append("birthDate", info.birthDate);
         formData.append("address", info.address);
         formData.append("nationality", info.nationality);
-        formData.append("degree", info.degree);
-        formData.append("result", info.result);
+        formData.append("classLevel", info.classLevel);
+        formData.append("roll", parseInt(info.roll));
         formData.append("institute", info.institute);
         formData.append("photo", info.photo);
 
-        const { data } = await axios.post(`/api/tutors`, formData, config);
+        const { data } = await axios.post(`/api/students`, formData, config);
         if (data.success === true) {
             swal("Good job!", "You clicked the button!", "success")
                 .then((value) => {
@@ -156,12 +155,12 @@ const TeacherProfileCreate = () => {
                     </Col>
                     <Col md={4}>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Label>Highest Degree</Form.Label>
+                            <Form.Label>Class</Form.Label>
                             <Form.Control
                                 type="text"
-                                name="degree"
+                                name="classLevel"
                                 onChange={handleChange}
-                                placeholder="Example: Bechelor"
+                                placeholder="Your Class"
                                 required
                             />
                         </Form.Group>
@@ -170,10 +169,11 @@ const TeacherProfileCreate = () => {
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Result</Form.Label>
                             <Form.Control
-                                type="text"
-                                name="result"
+                                type="number"
+                                name="roll"
+                                min={0}
                                 onChange={handleChange}
-                                placeholder="Highest Academic Result"
+                                placeholder="Roll"
                                 required
                             />
                         </Form.Group>
@@ -185,7 +185,7 @@ const TeacherProfileCreate = () => {
                                 type="text"
                                 name="institute"
                                 onChange={handleChange}
-                                placeholder="Highest Academic Institute"
+                                placeholder="Your Institute Name"
                                 required
                             />
                         </Form.Group>
@@ -238,4 +238,4 @@ const TeacherProfileCreate = () => {
     );
 };
 
-export default TeacherProfileCreate;
+export default StudentProfileCreate;

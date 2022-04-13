@@ -1,9 +1,9 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import Sidebar from "../../Components/Sidebar/Sidebar";
-import ProfileCreate from '../../Components/StudentProfileCreate/StudentProfileCreate';
+import Sidebar from "../../Components/Sidebar/Sidebar"
+import TeacherProfile from '../../Components/TeacherProfile/TeacherProfile';
 
-const StudentProfileCreate = () => {
+const TeacherProfileView = () => {
     return (
         <Row className='m-0'>
             <Col md={4} lg={2}>
@@ -11,11 +11,11 @@ const StudentProfileCreate = () => {
             </Col>
             <Col md={8} lg={10}>
                 <Container>
-                    <ProfileCreate />
+                    <TeacherProfile/>
                 </Container>
             </Col>
         </Row>
     );
 };
 
-export default StudentProfileCreate;
+export default TeacherProfileView;
