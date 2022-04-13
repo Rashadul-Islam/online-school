@@ -2,7 +2,7 @@ import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import Sidebar from "../../Components/Sidebar/Sidebar"
 
-const TeacherDashboard = () => {
+const StudentProfileCreate = () => {
     return (
         <Row>
             <Col>
@@ -14,4 +14,4 @@ const TeacherDashboard = () => {
     );
 };
 
-export default TeacherDashboard;
+export default StudentProfileCreate;

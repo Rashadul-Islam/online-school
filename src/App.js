@@ -9,6 +9,8 @@ import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import TeacherDashboard from "./Screens/TeacherDashboard/TeacherDashboard";
 import StudentDashboard from "./Screens/StudentDashboard/StudentDashboard";
 import AdminDashboard from "./Screens/AdminDashboard/AdminDashboard";
+import TeacherProfileCreate from "./Screens/TeacherProfileCreate/TeacherProfileCreate";
+import StudentProfileCreate from "./Screens/StudentProfileCreate/StudentProfileCreate";
 
 function App() {
   const role = useSelector((state) =>
@@ -28,12 +30,14 @@ function App() {
             role === "student" &&
             <Route element={<ProtectedRoute role={role} />}>
               <Route path="/dashboard" element={<StudentDashboard />} />
+              <Route path="/profile/create" element={<StudentProfileCreate />} />
             </Route>
           }
           {
             role === "tutor" &&
             <Route element={<ProtectedRoute role={role} />}>
               <Route path="/dashboard" element={<TeacherDashboard />} />
+              <Route path="/profile/create" element={<TeacherProfileCreate />} />
             </Route>
           }
           {

@@ -73,7 +73,7 @@ function ResponsiveDrawer(props) {
                                 </ListItemIcon>
                                 <ListItemText className='item_hover' primary="All Course" />
                             </ListItem>
-                            <ListItem button component={Link} to="/addCourse">
+                            <ListItem button component={Link} to="/course/add">
                                 <ListItemIcon>
                                     <AddBoxIcon />
                                 </ListItemIcon>
@@ -135,19 +135,25 @@ function ResponsiveDrawer(props) {
                         </>
                     }
 
-                    <ListItem button component={Link} to="/profile">
-                        <ListItemIcon>
-                            <AccountCircleIcon />
-                        </ListItemIcon>
-                        <ListItemText className='item_hover' primary="View Profile" />
-                    </ListItem>
-                    <ListItem button component={Link} to="/editProfile">
-                        <ListItemIcon>
-                            <EditIcon />
-                        </ListItemIcon>
-                        <ListItemText className='item_hover' primary="Edit Profile" />
-                    </ListItem>
-                    <ListItem button component={Link} to="/changePassword">
+                    {
+                        (role === "student" || role === "tutor") &&
+                        <>
+                            <ListItem button component={Link} to="/profile">
+                                <ListItemIcon>
+                                    <AccountCircleIcon />
+                                </ListItemIcon>
+                                <ListItemText className='item_hover' primary="View Profile" />
+                            </ListItem>
+                            <ListItem button component={Link} to="/profile/edit">
+                                <ListItemIcon>
+                                    <EditIcon />
+                                </ListItemIcon>
+                                <ListItemText className='item_hover' primary="Edit Profile" />
+                            </ListItem>
+                        </>
+                    }
+
+                    <ListItem button component={Link} to="/password/change">
                         <ListItemIcon>
                             <LockResetIcon />
                         </ListItemIcon>
