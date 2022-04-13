@@ -1,16 +1,15 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
 const ProtectedRoute = ({
     role,
     redirectPath = '/login',
     children,
 }) => {
-    console.log(role);
     if (!role) {
         return <Navigate to={redirectPath} replace />;
     }
 
-    return children;
+    return children ? children : <Outlet />;
 };
 
 export default ProtectedRoute;

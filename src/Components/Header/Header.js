@@ -27,6 +27,7 @@ const Header = () => {
                     >
                         <Nav.Link href="/">Home</Nav.Link>
                         {role === "" ? <Nav.Link href="/login">Login</Nav.Link> : <Nav.Link onClick={logoutHandler} href="#">Logout</Nav.Link>}
+                        {role !== "" && <Nav.Link href="/dashboard">Dashboard</Nav.Link>}
                         <Nav.Link href="/" >About</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>

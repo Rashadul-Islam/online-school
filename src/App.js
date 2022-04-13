@@ -6,29 +6,45 @@ import Header from "./Components/Header/Header";
 import Homepage from "./Screens/Homepage/Homepage";
 import { useSelector } from "react-redux";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
-import Dashboard from "./Components/Dashboard/Dashboard";
+import TeacherDashboard from "./Screens/TeacherDashboard/TeacherDashboard";
+import StudentDashboard from "./Screens/StudentDashboard/StudentDashboard";
+import AdminDashboard from "./Screens/AdminDashboard/AdminDashboard";
 
 function App() {
   const role = useSelector((state) =>
     state.userLogin.userInfo ? state.userLogin.userInfo.role : ""
   );
   return (
-    <Router>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/login" element={<LoginScreen />} />
-        <Route path="/register" element={<RegisterScreen />} />
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute role={role}>
-              <Dashboard />
-            </ProtectedRoute>
+    <>
+
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/home" element={<Homepage />} />
+          <Route path="/login" element={<LoginScreen />} />
+          <Route path="/register" element={<RegisterScreen />} />
+          {
+            role === "student" &&
+            <Route element={<ProtectedRoute role={role} />}>
+              <Route path="/dashboard" element={<StudentDashboard />} />
+            </Route>
           }
-        />
-      </Routes>
-    </Router>
+          {
+            role === "tutor" &&
+            <Route element={<ProtectedRoute role={role} />}>
+              <Route path="/dashboard" element={<TeacherDashboard />} />
+            </Route>
+          }
+          {
+            role === "admin" &&
+            <Route element={<ProtectedRoute role={role} />}>
+              <Route path="/dashboard" element={<AdminDashboard />} />
+            </Route>
+          }
+        </Routes>
+      </Router>
+    </>
   );
 }
 
