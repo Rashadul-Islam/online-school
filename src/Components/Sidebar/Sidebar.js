@@ -16,7 +16,6 @@ import { Link } from 'react-router-dom';
 import './Sidebar.css'
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import QuizIcon from '@mui/icons-material/Quiz';
-import HistoryIcon from '@mui/icons-material/History';
 import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import DashboardIcon from '@mui/icons-material/Dashboard';
@@ -107,12 +106,6 @@ function ResponsiveDrawer(props) {
                                     <QuizIcon />
                                 </ListItemIcon>
                                 <ListItemText className='item_hover' primary="Exam" />
-                            </ListItem>
-                            <ListItem button component={Link} to="/results">
-                                <ListItemIcon>
-                                    <HistoryIcon />
-                                </ListItemIcon>
-                                <ListItemText className='item_hover' primary="Results" />
                             </ListItem>
                         </>
                     }

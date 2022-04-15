@@ -37,7 +37,7 @@ const TeacherProfile = () => {
                 <Image
                     className="profile_picture mx-auto d-flex justify-content-center"
                     roundedCircle
-                    src={`${tutorInfo?.photo}`}
+                    src={`/${tutorInfo?.photo}`}
                     alt="tutor"
                 />
                 <Row className="mx-auto d-flex justify-content-center pt-5">

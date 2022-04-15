@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const StudentProfile = () => {
     const history = useNavigate();
-    const [studentinfo, setStudentinfo] = useState([]);
+    const [studentInfo, setstudentInfo] = useState([]);
     const id = useSelector((state) => state.userLogin.userInfo._id);
     const token = useSelector((state) => state.userLogin.userInfo.token);
 
@@ -24,7 +24,7 @@ const StudentProfile = () => {
                 }
                 else {
                    res.json()
-                   .then((data) => setStudentinfo(data?.student))
+                   .then((data) => setstudentInfo(data?.student))
                 }
             })
         // eslint-disable-next-line
@@ -36,38 +36,38 @@ const StudentProfile = () => {
                 <Image
                     className="profile_picture mx-auto d-flex justify-content-center"
                     roundedCircle
-                    src={`${studentinfo?.photo}`}
+                    src={`/${studentInfo?.photo}`}
                     alt="tutor"
                 />
                 <Row className="mx-auto d-flex justify-content-center pt-5">
                     <Col md={4}>
-                        <p className="text-center">Name: {studentinfo?.name}</p>
+                        <p className="text-center">Name: {studentInfo?.name}</p>
                     </Col>
                     <Col md={4}>
-                        <p className="text-center">Gender: {studentinfo?.gender}</p>
+                        <p className="text-center">Gender: {studentInfo?.gender}</p>
                     </Col>
                     <Col md={4}>
-                        <p className="text-center">Contact: {studentinfo?.phone}</p>
+                        <p className="text-center">Contact: {studentInfo?.phone}</p>
                     </Col>
                     <Col md={4}>
-                        <p className="text-center">Birth Date: {studentinfo?.birthDate}</p>
+                        <p className="text-center">Birth Date: {studentInfo?.birthDate}</p>
                     </Col>
                     <Col md={4}>
-                        <p className="text-center">Address: {studentinfo?.address}</p>
+                        <p className="text-center">Address: {studentInfo?.address}</p>
                     </Col>
                     <Col md={4}>
                         <p className="text-center">
-                            Nationality: {studentinfo?.nationality}
+                            Nationality: {studentInfo?.nationality}
                         </p>
                     </Col>
                     <Col md={4}>
-                        <p className="text-center">Degree: {studentinfo?.classLevel}</p>
+                        <p className="text-center">Class: {studentInfo?.classLevel}</p>
                     </Col>
                     <Col md={4}>
-                        <p className="text-center">Result: {studentinfo?.roll}</p>
+                        <p className="text-center">Result: {studentInfo?.roll}</p>
                     </Col>
                     <Col md={4}>
-                        <p className="text-center">Institute: {studentinfo?.institute}</p>
+                        <p className="text-center">Institute: {studentInfo?.institute}</p>
                     </Col>
                 </Row>
             </Container>

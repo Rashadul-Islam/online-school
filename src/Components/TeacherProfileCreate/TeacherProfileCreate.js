@@ -67,7 +67,7 @@ const TeacherProfileCreate = () => {
 
         const { data } = await axios.post(`/api/tutors`, formData, config);
         if (data.success === true) {
-            swal("Good job!", "You clicked the button!", "success")
+            swal("Good job!", "Profile Created!", "success")
                 .then((value) => {
                     history("/profile");
                     document.getElementById("myForm").reset();
